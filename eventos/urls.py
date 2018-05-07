@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from evento.views import home_eventos, home_evento
+from evento.views import home_eventos, home_evento, lista_tipos, create_tipo, salvar_tipo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('eventos/', home_eventos, name='home_eventos'),
+    path('tipos/', lista_tipos, name='home_tipos'),
+    path('tipos/add', create_tipo, name='create_tipo'),
+    path('tipos/salvar', salvar_tipo, name='salvar_tipo'),
     path('eventos/<int:evento_id>/', home_evento, name='home_evento'),
 ]
