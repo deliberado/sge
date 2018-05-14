@@ -20,7 +20,7 @@ from evento.views import home_eventos, home_evento, lista_tipos, create_tipo, sa
 
 urlpatterns = [
     path('autenticar/', do_login, name='autenticar'),
-    path('area_interna/', area_interna, name='autenticar'),
+    path('area_interna/', area_interna, name='area_interna'),
     path('admin/', admin.site.urls),
     path('eventos/', home_eventos, name='home_eventos'),
     path('tipos/', lista_tipos, name='home_tipos'),
