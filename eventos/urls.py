@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from evento.views import home_eventos, home_evento, lista_tipos, create_tipo, salvar_tipo
+from evento.views import home_eventos, home_evento, lista_tipos, create_tipo, salvar_tipo, \
+    do_login, area_interna
 
 urlpatterns = [
+    path('autenticar/', do_login, name='autenticar'),
+    path('area_interna/', area_interna, name='autenticar'),
     path('admin/', admin.site.urls),
     path('eventos/', home_eventos, name='home_eventos'),
     path('tipos/', lista_tipos, name='home_tipos'),

@@ -1,6 +1,23 @@
 from django.shortcuts import render, redirect
 from evento.models import Evento, Tipo
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+
+
+def do_login(request):
+    if request.method == 'POST':
+        user = authenticate(username=request.POST.get('usuario'), password=request.POST.get('senha'))
+        if user is not None:
+            login(request, user)
+            return redirect('/area_interna')
+    
+    return render(request, 'login.html')        
+
+@login_required
+def area_interna(request):
+    return render(request, 'area_interna.html', context=None)
+
 
 def home_eventos(request):
     lista_eventos = Evento.objects.all()
